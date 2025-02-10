@@ -1,0 +1,57 @@
+from .webpage {
+    background-color: #f1f1f1;
+}
+
+.webpage-header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.webpage-header h1 {
+    margin: 0;
+}
+
+.webpage-content {
+    padding: 20px;
+}
+
+.webpage-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.webpage-footer p {
+    margin: 0;
+}
+
+.webpage-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.webpage-footer a:hover {
+    text-decoration: underline;
+}
+
+.webpage-footer a:visited {
+    color: #fff;
+}
+
+.webpage-footer a:active {
+    color: #fff;
+}
+
+.webpage-footer a:focus {
+    color: #fff;
+}
+
+.webpage-footer a:hover {
+    color: #fff;
+}
+
+.webpage-footer a:active {
+    color: #fff;
+}
