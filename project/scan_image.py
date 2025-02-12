@@ -12,9 +12,15 @@ class StyleRecommender:
     def __init__(self, image_folder, style_labels):
         self.image_folder = image_folder
         self.style_labels = style_labels
+        for label in style_labels:
+            if not os.path.exists(os.path.join(image_folder, label)):
+                raise ValueError(f"Folder for label {label} does not exist.")
+            label = ["casual", "elegant", "fancy", "formal", "minimal"]
+        self.image_folder = image_folder
+        self.style_labels = style_labels
         self.label_encoder = LabelEncoder()
         self.clf = RandomForestClassifier(n_estimators=100, random_state=42)
-        self.scaler = StandardScaler()  # For scaling features
+        self.scaler = StandardScaler()
         
     def load_and_preprocess_data(self):
         X = []
@@ -128,28 +134,4 @@ class StyleRecommender:
         self.clf = data['classifier']
         self.scaler = data['scaler']
         self.label_encoder = data['label_encoder']
-"""
-# Usage example
-if __name__ == '__main__':
-    styles = ["Modern", "Traditional", "Industrial", "Minimalist", "Scandinavian"]
-    recommender = StyleRecommender("path/to/dataset", styles)
 
-    # Train the model
-    recommender.train()
-
-    # Evaluate performance
-    accuracy, report = recommender.evaluate()
-    print(f"Model Accuracy: {accuracy:.2%}")
-    print("\nClassification Report:")
-    print(report)
-
-    # Save the model (optional)
-    recommender.save_model("style_recommender.joblib")
-
-    # Get style recommendations for a new image
-    recommendations = recommender.predict_style("path/to/new/image.jpg")
-    if isinstance(recommendations, str):
-        print(recommendations)  # error message
-    else:
-        for style, probability in recommendations:
-            print(f"{style}: {probability:.2%}")"""
